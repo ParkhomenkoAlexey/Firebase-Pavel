@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class AuthViewController: UIViewController {
     
@@ -32,11 +34,13 @@ class AuthViewController: UIViewController {
     }
     
     @objc private func emailButtonTapped() {
-        
+        let signUpVC = SignUpViewController()
+        present(signUpVC, animated: true, completion: nil)
     }
     
     @objc private func loginButtonTapped() {
-        
+        let loginVC = LoginViewController()
+        present(loginVC, animated: true, completion: nil)
     }
 }
 

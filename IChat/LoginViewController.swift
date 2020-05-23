@@ -42,11 +42,19 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func loginButtonTapped() {
-        
+        AuthService.shared.login(email: emailTextField.text,
+                                 password: passwordTextField.text) { (result) in
+                                    switch result {
+                                    case .success(_):
+                                        print("Успешно!")
+                                    case .failure(let error):
+                                        print(error.localizedDescription)
+                                    }
+        }
     }
     
     @objc private func signUpButtonTapped() {
-
+        
     }
 }
 
@@ -58,8 +66,8 @@ extension LoginViewController {
                                          axis: .vertical,
                                          spacing: 0)
         let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField],
-        axis: .vertical,
-        spacing: 0)
+                                            axis: .vertical,
+                                            spacing: 0)
         
         loginButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         let stackView = UIStackView(arrangedSubviews: [
